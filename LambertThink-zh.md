@@ -1,4 +1,5 @@
 # LambertThink - 開發思維日誌 🧠
+🌐 [English Version](./LambertThink.md) | [繁體中文版本](./LambertThink-zh.md)
 
 > "這不只是程式碼的堆疊，而是一場關於工業自動化與邊緣運算融合的實驗。"
 
