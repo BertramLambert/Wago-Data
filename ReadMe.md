@@ -9,7 +9,7 @@ This repository provides **WAGO** software examples and technical operation manu
 
 - **Software Examples**: Includes [Codesys](#codesys-example), [Python](#python-example), and [Node-RED](#node-red).
 - **Controller Operation Manuals**: Covers hardware-specific guides for [CC100](#cc100-controller), [BC100](#bc100-controller), and [PFC200](#pfc200-controller).
-- **Environment Setup**: Guides for [Docker](#docker-operation), [Switch](#Switch-Opeartion) configurations, and controller runtime environments.
+- **Environment Setup**: Guides for [Docker](#docker-operation), [Switch](#-Switch-Opeartion) configurations, and controller runtime environments.
 
 ---
 
@@ -52,7 +52,7 @@ This repository provides **WAGO** software examples and technical operation manu
 
 ---
 
-## Switch Opeartion
+## 📶 Switch Opeartion
 -
 
 ---
