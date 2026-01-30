@@ -34,6 +34,12 @@ This repository provides **WAGO** software examples and technical operation manu
 - **Edge-Schedule System**
   - **Timed Automation**: Implement complex scheduling logic (Cron jobs) to trigger hardware outputs independently of PLC runtime.
   - **Operational Flexibility**: Easily adjust production shifts or lighting schedules via a visual interface without recompiling PLC code.
+- **SQLite DataLogger**:
+  - **Local Persistence**: Log critical operational data into an internal SQLite database for long-term tracking and offline data integrity.
+  - **Historical Querying**: Enable the ability to retrieve past events or trends directly from the controller's storage.
+- **Protocol Gateway**:
+  - **IT/OT Convergence**: Bridge the gap between industrial protocols (Modbus, OPC UA) and IT standards (MQTT, RESTful APIs, JSON).
+  - **Cross-Platform Interoperability**: Enable seamless data exchange between different brands of automation hardware and cloud services.
 
 ---
 
