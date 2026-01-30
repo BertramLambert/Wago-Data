@@ -8,9 +8,9 @@ This repository provides software examples and technical manuals for **WAGO** co
 ## 📂 Overview
 
 - **Software Examples**: Includes [Codesys](#codesys-examples), [Python](#python-examples), and [Node-RED](#node-red-examples).
-- **System Architecture**: Advanced topics on [Edge Server Swarm](#-edge-server-swarm).
 - **Controller Manuals**: Hardware-specific guides for [CC100](#cc100-controller), [BC100](#bc100-controller), and [PFC200](#pfc200-controller).
 - **Environment Setup**: Configurations for [Docker](#-docker-operations), [Routers](#-router-operations), and Controller Runtimes.
+- **System Architecture**: Advanced topics on [Edge Server Swarm](#-edge-server-swarm).
 
 ---
 
