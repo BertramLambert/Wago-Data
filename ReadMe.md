@@ -1,5 +1,5 @@
 # Wago-Data
-🌐 [English Version](./README.md) | [繁體中文版本](./README-zh.md)
+🌐 [English Version](./ReadMe.md) | [繁體中文版本](./ReadMe-zh.md)
 
 This repository provides **WAGO** software examples and technical operation manuals to help you get started with industrial automation tasks.
 
