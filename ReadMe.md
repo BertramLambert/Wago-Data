@@ -40,6 +40,10 @@ This repository provides **WAGO** software examples and technical operation manu
 - **Protocol Gateway**:
   - **IT/OT Convergence**: Bridge the gap between industrial protocols (Modbus, OPC UA) and IT standards (MQTT, RESTful APIs, JSON).
   - **Cross-Platform Interoperability**: Enable seamless data exchange between different brands of automation hardware and cloud services.
+- **Interactive Dashboard (Web HMI)**:
+  - **Real-time Monitoring**: Visualize sensor data and system status through gauges, charts, and status indicators.
+  - **Remote Control**: Toggle digital outputs or adjust setpoints directly from a web browser or mobile device.
+  - **Low-code UI**: Demonstrate how to build a professional industrial interface without HTML/CSS knowledge.
 
 ---
 
