@@ -51,4 +51,4 @@ This repository provides **WAGO** software examples and technical operation manu
 - **750-8212** (PFC200 Generation 2)
 
 ---
-*Last updated: 2026*
+*Last updated: 2026/1/30*
