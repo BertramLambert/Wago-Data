@@ -20,6 +20,7 @@ This repository provides **WAGO** software examples and technical operation manu
 - **Modbus TCP Communication**: Read/Write data across different network domains and gateways.
 - **MQTT-Publish**: Send controller data (Sensors/Status) to an MQTT Broker (e.g., Mosquitto, Azure IoT Hub).
 - **MQTT-Subscribe**: Receive remote commands or configurations from a Broker to control hardware output.
+- **OPC UA Server**: Enables the controller to provide I/O signals and variable access to SCADA/HMI systems via the OPC UA protocol.
 
 ### Python Example
 - **Web Dashboard**: Python Runtime using **Flask** and **Vue.js/HTML** for custom Web HMI and API development.
