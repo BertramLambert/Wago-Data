@@ -8,9 +8,9 @@
 ## 📂 內容概覽
 
 - **軟體範例**: 包含 [Codesys](#codesys-範例)、[Python](#python-範例) 與 [Node-RED](#node-red-範例)。
-- **系統架構範例**: 涵蓋進階的 [邊緣伺服器叢集 (Edge Swarm)](#-邊緣伺服器叢集-edge-server-swarm)。
 - **控制器操作手冊**: 涵蓋 [CC100](#cc100-控制器)、[BC100](#bc100-控制器) 與 [PFC200](#pfc200-控制器) 的硬體專屬指南。
 - **環境設定**: 包含 [Docker](#-docker-操作)、[路由器](#-路由器-操作) 配置以及控制器運行環境 (Runtime) 設定。
+- **系統架構範例**: 涵蓋進階的 [邊緣伺服器叢集 (Edge Swarm)](#-邊緣伺服器叢集-edge-server-swarm)。
 
 ---
 
