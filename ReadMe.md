@@ -31,6 +31,9 @@ This repository provides **WAGO** software examples and technical operation manu
 - **Discord Bot Integration**: 
   - **Interactive Commands**: Control the WAGO controller remotely via Discord chat commands.
   - **Status Notifications**: Push real-time hardware alarms and event logs directly to your Discord channel.
+- **Edge-Schedule System**
+  - **Timed Automation**: Implement complex scheduling logic (Cron jobs) to trigger hardware outputs independently of PLC runtime.
+  - **Operational Flexibility**: Easily adjust production shifts or lighting schedules via a visual interface without recompiling PLC code.
 
 ---
 
