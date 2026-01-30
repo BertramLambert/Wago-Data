@@ -1,4 +1,5 @@
 # Wago-Data
+🌐 [English Version](./README.md) | [繁體中文版本](./README-zh.md)
 
 本儲存庫提供 **WAGO** 相關軟體範例與技術操作手冊，旨在幫助使用者快速上手工業自動化與邊緣運算任務。
 
