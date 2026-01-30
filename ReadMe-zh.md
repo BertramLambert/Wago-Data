@@ -20,6 +20,7 @@
 - **Modbus TCP 通訊**: 實現跨網域 (Cross-Domain) 與經由網關 (Gateway) 的數據讀寫實作。
 - **MQTT-發佈 (Publish)**: 將控制器數據（感測器數值/設備狀態）傳送至 MQTT Broker（如 Mosquitto, Azure IoT Hub）。
 - **MQTT-訂閱 (Subscribe)**: 接收來自 Broker 的遠端指令或配置，藉此控制硬體輸出輸出。
+- **OPC UA Server**: 使控制器具備伺服器功能，透過標準化協定將 I/O 訊號與變數開放給 SCADA 或 HMI 系統進行即時監控與控制。
 
 ### Python 範例
 - **網頁儀表板 (Web HMI)**: 使用 **Flask** 作為後端 API，並搭配 **Vue.js/HTML** 前端開發自定義的視覺化監控介面。
