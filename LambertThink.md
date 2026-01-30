@@ -1,4 +1,5 @@
 # LambertThink - Development Philosophy & DevLog 🧠
+🌐 [English Version](./LambertThink.md) | [繁體中文版本](./LambertThink-zh.md)
 
 > "This is not just a stack of code; it is an experiment in the fusion of Industrial Automation and Edge Computing."
 
