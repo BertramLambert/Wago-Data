@@ -1,82 +1,80 @@
-# User Guide: WAGO 750-362 Modbus TCP Coupler Configuration
+# 技術手冊：WAGO 750-362 Modbus TCP Coupler 底層通訊與狀態解析
 
-> [!TIP]
-> **Technical Document Info:**
-> ![Device](https://img.shields.io/badge/Device-WAGO%20750--362-ee0000) ![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP-orange) ![Category](https://img.shields.io/badge/Category-Remote%20I/O-blue) ![Status](https://img.shields.io/badge/Status-Field%20Proven-brightgreen)
+> [!IMPORTANT]
+> **文件資訊：**
+> ![Device](https://img.shields.io/badge/Device-WAGO%20750--362-ee0000) ![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP-orange) ![Function](https://img.shields.io/badge/Focus-Low--Level%20Diagnostics-blue)
 
+> ![Hackmd](https://hackmd.io/@rLkw7TiWQemz2Qv-71l4PA/rk_iiopSWx)
 ---
 
 ## 📖 目錄 (Table of Contents)
-1. [硬體架構與概述 (Overview)](#1-硬體架構與概述-overview)
-2. [WBM 網頁介面配置 (Web-Based Management)](#2-wbm-網頁介面配置-web-based-management)
-3. [Modbus 位址映射邏輯 (Process Data Mapping)](#3-modbus-位址映射邏輯-process-data-mapping)
-4. [物理 I/O 與 Modbus 暫存器對照表](#4-物理-io-與-modbus-暫存器對照表)
-5. [進階應用：搭配 CC100 橋接](#5-進階應用搭配-cc100-橋接)
+1. [通訊狀態對應表 (Status Codes)](#1-通訊狀態對應表-status-codes)
+2. [暫存器封包結構解析 (Register Structure)](#2-暫存器封包結構解析-register-structure)
+3. [Modbus RTU over TCP 封包範例](#3-modbus-rtu-over-tcp-封包範例)
+4. [WBM 雲端連線配置 (MQTT Bridge 參考)](#4-wbm-雲端連線配置-mqtt-bridge-參考)
+5. [故障排除說明](#5-故障排除說明)
 
 ---
 
-## 1. 硬體架構與概述 (Overview)
-WAGO 750-362 是一款通訊耦合器 (Coupler)，其本身不具備可編程邏輯 (PLC Runtime)，僅作為遠端 I/O 站點。它透過 **Modbus TCP** 協議，讓 Master 設備 (如 CC100 或 PC) 讀寫後端掛載的各種 750 系列模組。
+## 1. 通訊狀態對應表 (Status Codes)
 
+在監測 750-362 的通訊過程時，Master 端的命令與 Slave 端的回應數值關係如下表：
 
-
----
-
-## 2. WBM 網頁介面配置 (Web-Based Management)
-在進行通訊前，必須正確設定網路參數。
-
-### 步驟 A：進入設定頁面
-* **預設 IP**：`192.168.1.xxx` (視現場設定而定)。
-* **預設帳密**：`admin` / `wago`。
-
-### 步驟 B：關鍵設定檢查
-1. **Networking**: 確保 IP Address 與 Subnet Mask 與主站（Master）在同一網段。
-2. **Fieldbus**: 確認 Modbus TCP 協議已啟用。
-3. **Watchdog**: 建議設定通訊超時安全機制，當通訊中斷時，輸出模組能自動回歸安全狀態。
+| 下命令 (Request) | 狀態回應 (Response) | 說明 (Description) |
+| :--- | :--- | :--- |
+| **0X0216** | **0X0804** | **初始化 (Initialization)**：模組正在進行內部掃描與配置。 |
+| **0X0108** | **0X0800** | **通訊待機 (Standby)**：系統已就緒，等待 Master 請求。 |
+| **0X0103** | **0X0813** | **取得回應 (Acknowledge)**：Slave 已確認收到正確請求。 |
+| **0X0108** | **0X0918** | **取得數據 (Data Received)**：資料已成功讀取並準備傳輸。 |
 
 ---
 
-## 3. Modbus 位址映射邏輯 (Process Data Mapping)
-這是 750-362 最核心的概念。位址是根據後端掛載的模組順序**自動排列**的：
+## 2. 暫存器封包結構解析 (Register Structure)
 
-* **數位模組 (Digital)**：以 `Bit` 為單位進行偏移，但 Modbus 通常以 `Register (Word)` 存取。
-* **類比模組 (Analog)**：以 `Word (2 Bytes)` 為單位，優先排列在位址表的前端。
-* **排列優先順序**：
-    1. 類比輸入 (AI)
-    2. 類比輸出 (AO)
-    3. 數位輸入 (DI)
-    4. 數位輸出 (DO)
+針對位址 **40513 ~ 40517**，其內部數據與實體 Modbus 封包欄位的對應關係如下：
 
----
-
-## 4. 物理 I/O 與 Modbus 暫存器對照表
-
-根據過程數據映射邏輯，常用對照參考如下：
-
-| I/O 類型 | Modbus 起始位址 (Hex) | Modbus 起始位址 (Dec) | 功能說明 |
-| :--- | :--- | :--- | :--- |
-| **Input Register** | `0x0000` | `0` | 讀取 AI 與 DI 狀態 |
-| **Holding Register**| `0x0200` | `512` | 讀寫 AO 與 DO 狀態 |
-| **Coils** | `0x0000` | `0` | 直接控制數位輸出 (DO) |
-| **Discrete Inputs** | `0x0000` | `0` | 直接讀取數位輸入 (DI) |
+| 暫存器 (Addr) | 高位字節 (HI) | 低位字節 (LO) | 欄位說明 (Field Description) |
+| :---: | :---: | :---: | :--- |
+| **40513** | **C1** | **C0** | **通訊命令碼**：定義當前傳輸的動作類型。 |
+| **40514** | **D1** | **D0** | **功能碼 / 站號**：如 `03 01` 代表功能碼 03 且站號為 1。 |
+| **40515** | **D3** | **D2** | **通訊起始位置**：目標暫存器的起始地址。 |
+| **40516** | **D5** | **D4** | **通訊數量**：請求讀取或寫入的寄存器總數。 |
+| **40517** | **D7** | **D6** | **CRC 校驗碼**：包含 CRC-High 與 CRC-Low。 |
 
 
 
 ---
 
-## 5. 進階應用：搭配 CC100 橋接
-您可以將此 750-362 站點與 **MultiSegment_Modbus_Bridge** 專案整合：
+## 3. Modbus RTU/TCP 封包範例
 
-1. **CC100 作為 Master**：負責輪詢 750-362。
-2. **雙網口隔離**：CC100 透過 Port 1 讀取 750-362，處理後透過 Port 2 轉發。
-3. **填表式轉發**：CC100 讀取 750-362 的位址，並將資料填入 `aLogData` 陣列中彙整。
+以下為對照表中顯示的實際數據流範例（以 40513-40517 橫向排列）：
+
+| 40513 (C1/C0) | 40514 (D1/D0) | 40515 (D3/D2) | 40516 (D5/D4) | 40517 (D7/D6) | 解析說明 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `01 03` | `03 01` | `00 00` | `01 00` | `0A 84` | 站號 1, 讀取 Addr 0, 數量 1, CRC 0A84 |
+| `01 03` | `03 01` | `00 00` | `02 00` | `0B C4` | 站號 1, 讀取 Addr 0, 數量 2, CRC 0BC4 |
+| `01 03` | `03 01` | `00 00` | `03 00` | `CB 05` | 站號 1, 讀取 Addr 0, 數量 3, CRC CB05 |
+
+---
+
+## 4. WBM 雲端連線配置 (MQTT Bridge 參考)
+
+若將 750-362 讀取的資料透過網關（如 CC100）轉發至雲端，其 WBM 配置如下：
+
+* **Cloud Platform**: `MQTT AnyCloud`
+* **Hostname**: 填入 Broker IP（如 `192.168.1.224`）
+* **Port**: `1883`
+* **Client ID**: 設備識別碼（如 `Wago750-9301`）
+
+
 
 ---
 
-## 🛠️ 故障排除 (Troubleshooting)
-* **I/O 燈號異常 (I/O LED)**：檢查後端模組是否插緊，或結尾端蓋 (750-600) 是否漏裝。
-* **讀取數值為 0**：確認 Modbus Unit ID，通常預設為 `1` 或 `255`。
-* **位址偏移**：若中間增加一個模組，後續所有位址都會自動往後推移，需重新計算映射表。
+## 5. 故障排除說明
+
+* **CRC 錯誤 (D7/D6)**：若 CRC 碼不符合封包內容，請檢查通訊電纜是否存在電磁干擾或終端電阻是否匹配。
+* **狀態停滯於 0X0804**：代表 750-362 正在初始化後端 I/O 模組，若持續太久，請檢查模組排列順序或末端蓋 (End Module) 是否安裝。
+* **站號錯誤 (D0)**：確保 Master 發送的 Unit ID 與 750-362 網頁設定的實體 ID 一致。
 
 ---
-> **Manual Refined based on 750-362 Implementation Experience.**
+> **本文檔根據 750-362 實作封包截圖進行編寫，用於底層協議開發參考。**
