@@ -1,0 +1,23 @@
+[
+    {
+        "id": "b5e5c1abbfd5140c",
+        "type": "function",
+        "z": "095fe5f2325fa625",
+        "name": "function 2",
+        "func": "try {\n    // 1. 檢查回傳路徑 (F-C0032-001 使用 location 而非 locations)\n    if (!msg.payload.records || !msg.payload.records.location || msg.payload.records.location.length === 0) {\n        throw new Error(\"API 未回傳預期的資料，請確認縣市名稱\");\n    }\n\n    const loc = msg.payload.records.location[0];\n    const elements = loc.weatherElement;\n    \n    // 2. 抓取關鍵屬性\n    const wx = elements.find(e => e.elementName === \"Wx\");\n    const minT = elements.find(e => e.elementName === \"MinT\");\n    const maxT = elements.find(e => e.elementName === \"MaxT\");\n    const pop = elements.find(e => e.elementName === \"PoP\");\n\n    let forecast = [];\n    // 3. 抓取未來 3 個時段 (今明 36 小時)\n    for (let i = 0; i < 3; i++) {\n        forecast.push({\n            \"時段\": wx.time[i].startTime.substring(5, 16),\n            \"天氣\": wx.time[i].parameter.parameterName,\n            \"氣溫\": minT.time[i].parameter.parameterName + \"~\" + maxT.time[i].parameter.parameterName + \"°C\",\n            \"降雨機率\": pop.time[i].parameter.parameterName + \"%\"\n        });\n    }\n\n    // 4. 極簡化輸出給 AI，解決 HeadersTimeoutError\n    msg.payload = [\n        { \"role\": \"system\", \"content\": \"你是氣象主播。請用30字內播報今日重點。禁英文。\" },\n        { \"role\": \"user\", \"content\": `${loc.locationName}預報：` + JSON.stringify(forecast) }\n    ];\n\n} catch (e) {\n    node.error(\"解析失敗: \" + e.message);\n    msg.payload = [{ \"role\": \"user\", \"content\": \"解析失敗：\" + e.message }];\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 360,
+        "wires": [
+            [
+                "f85f07e8b5023fcf",
+                "2aa99885a8104446"
+            ]
+        ]
+    }
+]
