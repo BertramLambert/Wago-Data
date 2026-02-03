@@ -4,7 +4,7 @@
 > **文件資訊：**
 > ![Device](https://img.shields.io/badge/Device-WAGO%20750--362-ee0000) ![Protocol](https://img.shields.io/badge/Protocol-Modbus%20TCP-orange) ![Function](https://img.shields.io/badge/Focus-Low--Level%20Diagnostics-blue)
 
-> ![Hackmd](https://hackmd.io/@rLkw7TiWQemz2Qv-71l4PA/rk_iiopSWx)
+> [Hackmd參考文件](https://hackmd.io/@rLkw7TiWQemz2Qv-71l4PA/rk_iiopSWx)
 ---
 
 ## 📖 目錄 (Table of Contents)
