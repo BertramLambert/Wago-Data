@@ -4,7 +4,7 @@
 
 ---
 **Language / 語言選擇**
-> **繁體中文版本** | [English Version (README.md)](./README.md)
+> **繁體中文版本** | [English Version (ReadMe.md)](./ReadMe.md)
 ---
 
 這是一個建立在 **Node-RED** 環境下的自動化氣象播報系統。透過整合 **中央氣象署 (CWA) 開放資料** 與 **本地 AI 模型 (Ollama)**，使用者只需輸入縣市名稱，系統即可自動產出一段口語化、具生活建議的天氣摘要。
