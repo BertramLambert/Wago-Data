@@ -1,6 +1,7 @@
 # 🤖 AI 氣象主播服務 (Gemma 3 + CWA API)
 
 這是一個建立在 **Node-RED** 環境下的自動化氣象播報系統。透過整合**中央氣象署 (CWA) 開放資料**與**本地 AI 模型 (Ollama)**，使用者只需輸入縣市名稱，系統即可自動產出一段口語化、具生活建議的天氣摘要。
+[Ollama Technical Document](https://github.com/ollama/ollama?tab=readme-ov-file#community-integrations)
 
 ## 🌟 核心亮點
 * **智能地名識別**：自動處理「台/臺」異體字，並將模糊輸入（如：台中）校正為標準 API 參數（如：臺中市）。
