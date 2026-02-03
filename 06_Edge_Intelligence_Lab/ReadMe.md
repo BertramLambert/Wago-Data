@@ -1,6 +1,6 @@
 # 🤖 06_Edge_Intelligence_Lab
 
-[中文版 (Chinese Version)](./README-zh.md)
+[中文版 (Chinese Version)](./ReadMe-zh.md)
 
 > [!IMPORTANT]
 > **Core Objective**: To explore the architectural integration of Industrial Controllers and Artificial Intelligence (AI).
