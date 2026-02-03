@@ -60,4 +60,5 @@
 * **資料未更新**: 確認 `xExecute` 是否有在 `TRUE` 與 `FALSE` 之間切換。
 * **錯誤代碼**: 若 `fbReadRegs.xError` 為真，請檢視 `fbReadRegs.udiErrorId` 以取得詳細錯誤資訊。
 
+
 ---
