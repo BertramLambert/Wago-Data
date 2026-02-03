@@ -82,4 +82,5 @@
 ---
 
 > **Project:** MultiSegment_Modbus_Bridge  
+
 > **Hardware:** WAGO CC100-751-9301
