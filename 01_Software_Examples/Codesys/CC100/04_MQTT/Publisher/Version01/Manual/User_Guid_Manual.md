@@ -83,4 +83,5 @@
 * **資料亂碼**：確認訂閱端（如 MQTT.fx 或 Node-RED）是否使用 UTF-8 編碼解讀字串。
 
 ---
+
 > **Manual Generated for WAGO MQTT System Integration**
