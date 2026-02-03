@@ -1,5 +1,9 @@
 # ModbusTCP_ARRAY 功能塊說明書
 
+> [!TIP]
+> **標籤：** ![Modbus](https://img.shields.io/badge/Protocol-Modbus%20TCP-blue) ![FC03](https://img.shields.io/badge/Function-FC03-orange) ![Platform](https://img.shields.io/badge/Platform-CODESYS-green)
+
+---
 ## 1. 概述
 `ModbusTCP_ARRAY` 是一個專為 CODESYS 環境設計的 Modbus TCP 輪詢工具。它支援**多組（最多 20 組）**連續位址的讀取，並能將所有讀取到的資料無縫拼接（Seamless Join）到一個總表中，方便人機介面（HMI）或上層系統一次性調取資料。
 
