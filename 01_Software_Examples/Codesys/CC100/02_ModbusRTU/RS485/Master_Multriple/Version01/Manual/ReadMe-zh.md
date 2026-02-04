@@ -1,6 +1,6 @@
 # WAGO CC100 Modbus RTU Multi-Slave Polling Guide
 
-[中文版](#chinese-version) | [English Version](#english-version)
+[中文版](./ReadMe-zh.md) | [English Version](./ReadMe.md)
 
 ---
 
@@ -49,4 +49,5 @@ CASE iState OF
         utResponse.bUnitId := 0; // 關鍵：清盤子
         iTaskIdx := (iTaskIdx + 1) MOD 3; 
         iState := 0;
+
 END_CASE
