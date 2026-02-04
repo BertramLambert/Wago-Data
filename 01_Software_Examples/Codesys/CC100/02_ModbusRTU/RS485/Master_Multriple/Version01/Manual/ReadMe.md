@@ -1,4 +1,5 @@
 # WAGO CC100 Modbus RTU Multi-Slave Polling Guide
+[中文版](./ReadMe-zh.md) | [English Version](./ReadMe.md)
 
 This document describes the implementation of a Modbus RTU Master on a **WAGO Compact Controller 100 (751-9301)** using a **CASE State Machine** to achieve dynamic multi-slave polling and sequential data storage in a 1D array.
 
@@ -108,3 +109,4 @@ CASE iState OF
         END_IF
         iState := 0;             
 END_CASE
+
