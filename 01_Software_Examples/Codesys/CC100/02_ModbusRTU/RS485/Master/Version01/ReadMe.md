@@ -1,6 +1,6 @@
 # WAGO CC100 Modbus RTU Master Implementation Guide
 
-[中文版](/ReadMe-zh.md) | [English Version](/ReadMe.md)
+[中文版](./ReadMe-zh.md) | [English Version](./ReadMe.md)
 
 This document records the implementation of Modbus RTU Master communication on a **WAGO CC100 (751-9301)** controller using **Structured Text (ST)** to interface with **ModSim32**.
 
@@ -86,4 +86,5 @@ IF timerTrigger.Q THEN
 ELSIF fbMbMaster.oStatus.xError OR (utResponse.bUnitId > 0) THEN 
     xTrigger := FALSE; // Reset trigger on completion or error
 END_IF
+
 
