@@ -1,6 +1,6 @@
 # WAGO CC100 Modbus RTU Master Guide
 
-[中文版](#chinese-version) | [English Version](#english-version)
+[中文版](/ReadMe-zh.md) | [English Version](/ReadMe.md)
 
 ---
 
@@ -50,4 +50,5 @@ IF timerTrigger.Q THEN
     xTrigger := TRUE;
 ELSIF fbMbMaster.oStatus.xError OR (utResponse.bUnitId > 0) THEN 
     xTrigger := FALSE; 
+
 END_IF
