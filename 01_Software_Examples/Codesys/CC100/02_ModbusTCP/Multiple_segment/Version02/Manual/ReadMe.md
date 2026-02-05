@@ -1,5 +1,10 @@
 # ModbusTCP_ARRAY Polling Function Block Documentation
 
+> [!TIP]
+> **語言切換 / Language Switch:**
+> [中文版 (Chinese)](./ReadMe-zh.md) | [English Version](./ReadMe.md)
+>
+
 ## 1. Functional Overview
 `ModbusTCP_ARRAY` is a high-flexibility communication Function Block (FB) designed for industrial PLCs. It allows users to automatically poll multiple data groups with different **Function Codes (FC)** over a single TCP connection using array-based configurations.
 
