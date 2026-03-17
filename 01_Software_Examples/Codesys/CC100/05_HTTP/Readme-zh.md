@@ -1,6 +1,6 @@
 # WAGO PLC HTTP Client Integration (WagoAppHTTP)
 
-![中文](./Readme-zh.md) | ![English](Readme.md)
+[中文](./Readme-zh.md) | [English](Readme.md)
 
 ![WAGO](https://img.shields.io/badge/Hardware-WAGO%20PFC200%20%2F%20CC100-green)
 ![CODESYS](https://img.shields.io/badge/Software-CODESYS%20V3.5-blue)
