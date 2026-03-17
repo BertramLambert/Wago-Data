@@ -1,4 +1,4 @@
-# 🚀 Lambert Nexus V2: WAGO CC100 IIoT Dashboard
+# 🚀 WAGO CC100 IIoT Dashboard
 
 [中文](Readme-zh.md)  | [English](Readme.md)
 
